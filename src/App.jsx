@@ -32,8 +32,8 @@ function App() {
 
 
 
-    {/* <TextForm handling="Enter the text to analyse"/> */}
-      <About />
+    <TextForm handling="Enter the text to analyse"/>  
+      {/* <About /> */}
   </div>
   )
 }
