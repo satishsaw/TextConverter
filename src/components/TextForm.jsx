@@ -76,7 +76,7 @@ export default function TextForm(props) {
             className="form-control"
             id="myBox"
             rows="8"
-            // value={text}
+            value={text}
             onChange={onChangeHandle}
             placeholder="Enter your text here..."
           ></textarea>
