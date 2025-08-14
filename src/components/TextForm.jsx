@@ -3,6 +3,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 export default function TextForm(props) {
   const [text, setText] = useState("Enter Text here ");
+  const [btnText,setBtnText] = useState('DarkMode');
   let num = 1;
   const handleUpClick = () => {
     console.log("Upercase was clicked ");
@@ -22,9 +23,7 @@ export default function TextForm(props) {
     console.log("Text hase Cleared : ");
   };
 
-  const handleBold = () => {
-    setText(text);
-  };
+  
 
   const handleInverse = () => {
     console.log("Inverse button Trigered");
@@ -36,40 +35,39 @@ export default function TextForm(props) {
     setText(newText);
   };
 
-const[myStyle,setStyle] = useState(
-{
-  color:'black',
-  backgraoundColor:'black',
-})
-  const handleMode=()=>{
-       if(myStyle.color ==='black'){
+  const [myStyle, setStyle] = useState({
+    color: "black",
+    backgraoundColor: "black",
+  });
+  const handleMode = () => {
+    if (myStyle.color === "black") {
+      let newStyle = {
+        color: "white",
+        backgroundColor: "black",
+        border: "1px solid white",
+        borderRadius: "5px",
+        marginTop: "2px",
+        marginBottom: "2px",
 
-            let newStyle = {color: 'white',
-             backgroundColor:'black',
-             border : '1px solid white',
-             borderRadius:'5px',
-              marginTop:'2px',
-             marginBottom:'2px'
-             }
-             setText("light Mode");
-             setStyle(newStyle);
-        }else{
-            setStyle (
-                {color: 'black',
-             backgroundColor:'white',
-             border : '1px solid black',
-             borderRadius:'5px',
-             marginTop:'2px',
-             marginBottom:'2px'
-            }
-            )
-            setText('Dark Mode')
-        }
+      };
+      setBtnText('Light Mode')
+      
+      setStyle(newStyle);
+    } else {
+      setStyle({
+        color: "black",
+        backgroundColor: "white",
+        border: "1px solid black",
+        borderRadius: "5px",
+        marginTop: "2px",
+        marginBottom: "2px",
+      });
+      setBtnText('Dark Mode')
 
-  }
+    }
+  };
   return (
-    <> 
-    
+    <>
       <div style={myStyle} className="container my-4">
         <h1 className="mb-3">{props.handling}</h1>
 
@@ -78,7 +76,7 @@ const[myStyle,setStyle] = useState(
             className="form-control"
             id="myBox"
             rows="8"
-            value={text}
+            // value={text}
             onChange={onChangeHandle}
             placeholder="Enter your text here..."
           ></textarea>
@@ -100,14 +98,14 @@ const[myStyle,setStyle] = useState(
       </div>
 
       <div className="container">
-        <h4>{text.length} </h4>
+        <h4> Total Characters :{text.length} </h4>
         <h2>Prevew</h2>
         <p>{text}</p>
 
-        <button onClick={handleMode} className="btn btn-dark"><h5>Dark Mode</h5></button>
+        <button onClick={handleMode} className="btn btn-dark">
+          <h5>{btnText}</h5>
+        </button>
       </div>
-
-
     </>
   );
 }
